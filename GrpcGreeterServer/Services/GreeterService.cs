@@ -7,7 +7,7 @@ public class GreeterService : Greeter.GreeterBase
 {
     private readonly ILogger<GreeterService> _logger;
     private static readonly Random _global = new Random();
-    [ThreadStatic] private static Random _local;
+    [ThreadStatic] private static Random? _local;
 
     private int Next(int min, int max)
     {
@@ -41,10 +41,9 @@ public class GreeterService : Greeter.GreeterBase
     {
         _logger.LogInformation("SayRandomNumber: {0}", request.Name);
         var randomNumber = Next(1, 100);
-        var outputMessage = $"The random number is {randomNumber}";
         return Task.FromResult(new HelloReply
         {
-            Message = outputMessage
+            Message = $"The random number is {randomNumber}"
         });
     }
 }

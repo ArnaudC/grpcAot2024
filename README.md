@@ -4,9 +4,13 @@ The server will store files or proxy encrypted streams.
 The client will send / recieve files or streams.
 
 # 1. Run the Server
+```powershell
 cd GrpcGreeterServer
 dotnet run -lp https
+```
 
 # 2. Run the client
+```powershell
 cd GrpcGreeterClient
-dotnet run -lp https
+Measure-Command { dotnet run | Out-Default }
+```
